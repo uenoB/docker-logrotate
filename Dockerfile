@@ -2,7 +2,7 @@ FROM debian:12 AS build
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends logrotate
 
-FROM gcr.io/distroless/base-debian12
+FROM gcr.io/distroless/base-nossl-debian12
 COPY --from=build \
   /lib/x86_64-linux-gnu/libacl.so.1 \
   /lib/x86_64-linux-gnu/libselinux.so.1  \

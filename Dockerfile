@@ -5,6 +5,7 @@ COPY pause.c /root
 RUN gcc -O2 -o /usr/bin/pause /root/pause.c
 
 FROM gcr.io/distroless/base-nossl-debian12
+COPY --from=build /bin/gzip /bin
 COPY --from=build \
   /lib/x86_64-linux-gnu/libacl.so.1 \
   /lib/x86_64-linux-gnu/libselinux.so.1  \
